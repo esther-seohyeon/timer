@@ -6,8 +6,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from sqlmodel import SQLModel, create_engine, Session, select
-from .models import Setting, Session as PomSession, CompletedTask, Wallpaper
-from .wallpaper_downloader import run_fetch
+from models import Setting, Session as PomSession, CompletedTask, Wallpaper
+from wallpaper_downloader import run_fetch
 import csv
 import io
 
