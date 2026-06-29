@@ -1,12 +1,13 @@
-name=render.yaml
 services:
   - type: web
     name: pomodoro-timer
     env: python
     plan: free
     region: oregon
-    buildCommand: bash -lc "cd frontend && npm ci && npm run build && cd ../backend && pip install -r requirements.txt"
-    startCommand: bash -lc "cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT"
+    buildCommand: >-
+      bash -lc 'curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && apt-get update && apt-get install -y nodejs && cd frontend && npm ci && npm run build && cd ../backend && PY=$(command -v python3 || command -v python || command -v python3.14 || true) && if [ -z "$PY" ]; then echo "no python found"; exit 1; fi && $PY -m venv .venv && . .venv/bin/activate && pip install --upgrade pip setuptools wheel && pip install -r requirements.txt'
+    startCommand: >-
+      bash -lc 'cd backend && . .venv/bin/activate && uvicorn main:app --host 0.0.0.0 --port $PORT'
     envVars:
       - key: RENDER_SKIP_WALLPAPER_DOWNLOAD
         value: "true"
