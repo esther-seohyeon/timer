@@ -1,0 +1,18 @@
+name=render.yaml
+services:
+  - type: web
+    name: pomodoro-timer
+    env: python
+    plan: free
+    region: oregon
+    buildCommand: bash -lc "cd frontend && npm ci && npm run build && cd ../backend && pip install -r requirements.txt"
+    startCommand: bash -lc "cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: RENDER_SKIP_WALLPAPER_DOWNLOAD
+        value: "true"
+      - key: RENDER_ENABLE_WALLPAPER_DOWNLOAD
+        value: "false"
+      - key: RENDER_WALLPAPER_LIMIT
+        value: "20"
+      - key: WALLPAPER_MAX_WIDTH
+        value: "1400"

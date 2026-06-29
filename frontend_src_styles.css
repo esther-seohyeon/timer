@@ -1,0 +1,28 @@
+name=frontend/src/styles.css
+:root{
+  --bg: rgba(255,255,255,0.85);
+  --accent: #ff66b2;
+  --muted: #6b6b6b;
+}
+*{box-sizing:border-box}
+body,html,#root{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,Arial}
+.app-root { min-height:100%; position:relative; background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.2)); }
+.container { max-width:760px; margin:48px auto; padding:24px; background:var(--bg); border-radius:12px; box-shadow: 0 10px 30px rgba(10,10,20,0.08); }
+.title { margin:0 0 16px 0; font-size:28px; color:#2b2b2b; text-align:center }
+.timer-card { display:flex; flex-direction:column; gap:12px; align-items:center }
+.task-input { width:100%; padding:10px 12px; border-radius:8px; border:1px solid #ddd; font-size:16px }
+.controls-row { display:flex; gap:12px; width:100%; justify-content:center; align-items:center }
+.controls-row input { width:72px; padding:6px; border-radius:8px; border:1px solid #ddd }
+.timer-display { display:flex; gap:16px; align-items:center }
+.progress-ring { width:160px; height:160px; }
+.ring-bg { fill:none; stroke:#eee; }
+.ring-fg { fill:none; stroke:var(--accent); stroke-linecap:round; transform: rotate(-90deg); transform-origin: 60px 60px; transition: stroke-dashoffset 0.9s linear; }
+.time-text { font-size:20px; fill:#222 }
+.session-info { display:flex; flex-direction:column; gap:6px; min-width:180px }
+.phase { font-weight:600 }
+.current-task { color:var(--muted) }
+.button-row { display:flex; gap:8px }
+button { padding:8px 12px; border-radius:8px; border:0; background:var(--accent); color:white; cursor:pointer }
+button:nth-child(2) { background:#888 }
+button:nth-child(3) { background:#444 }
+@media (max-width:600px){ .container{margin:20px;padding:16px} .progress-ring{width:120px;height:120px} }
